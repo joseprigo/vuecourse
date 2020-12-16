@@ -7,14 +7,13 @@
 </head>
 <body>
 	<div id="root" class="container">
-		<modal>
-			<template slot="header">Hello world</template>
-			<template slot="content"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae aperiam facilis aliquam commodi voluptatum accusamus unde quas. Natus vero veniam optio, nisi corporis ratione iure atque esse saepe neque deleniti!</template>
-			<template slot="footer">
-				<button class="button is-success">Save changes</button>
-	      		<button class="button">Cancel</button>
-			</template>
-		</modal>
+		<progress-view inline-template>
+			<section>
+
+			<h1> Your progress is {{completionRate}}%</h1>
+			<button @click="completionRate+=10"> Increase progress</button>
+			<section>
+		</progress-view>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
