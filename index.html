@@ -9,6 +9,10 @@
 	<div id="root" class="container">
 		<message-raw title="Hello World" body="lorem ipsum dolor sit amet."></message-raw>
 		<message-raw title="Hello Universe" body="Bla bla bla bla bla bla blae."></message-raw>
+		<modal-message v-if="showModal" @close="showModal = false">
+			<p> Custom message displayed in the modal</p>
+		</modal-message>
+		<button @click="showModal = true">Show modal message</button>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
