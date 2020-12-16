@@ -1,3 +1,19 @@
+window.Event = new class {
+
+	constructor(){
+		this.vue = new Vue();
+	}
+
+	fire(event, data = null){
+		this.vue.$emit(event,data);
+	}
+
+	listen(event, callback){
+		this.vue.$on(event,callback)
+
+	}
+};
+
 Vue.component('coupon',{
 
 	template: `
@@ -5,7 +21,7 @@ Vue.component('coupon',{
 	`,
 	methods:{
 		onCouponApplied(){
-			this.$emit('applied', this.coupon);
+			Event.fire('applied', this.coupon);
 
 		}
 	}
@@ -21,5 +37,8 @@ new Vue({
 		onCouponApplied(){
 			this.couponApplied = true;
 		}
+	},
+	created(){
+		Event.listen('applied', ()=> alert('Handeling it!'));
 	}
 });
