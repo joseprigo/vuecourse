@@ -1,60 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	
 	<title>vue app</title>
 </head>
 <body>
 	<div id="root">
-		<h2> All tasks </h2>
-		<ul>
-			<li v-for="task in tasks" v-text="task.name"></li>
-		</ul>
-
-		<button @click="addIncomplete"> Add to incomplete</button>
-
-
-		<h2> Incomplete tasks </h2>
-		<ul>
-			<li v-for="task in filteredTasks" v-text="task.name"></li>
-		</ul>
-		
+		<task>Go to bank</task>
+		<task>get to the store</task>
+		<task>buy some items</task>
+		<task>bring the items home</task>
+		<task> Dinner</task>
 	</div>
 	
-	
-	<script type="text/javascript">
-		new Vue({
-			el: "#root",
-
-			data: {
-
-				tasks: [
-				{name: 'Do the laundry', completed: false},
-				{name: 'Cook lunch', completed: true},
-				{name: 'Go to school', completed: false},
-				{name: 'Do english homework', completed: false},
-				{name: 'Call grandma', completed: true},
-				]
-			},
-
-			methods: {
-				addIncomplete(){
-					for (let i in this.tasks) {
-						if (this.tasks[i].completed){
-							this.tasks[i].completed = false;
-							break;
-						}
-					}
-				}
-			},
-
-			computed: {
-				filteredTasks(){
-					return this.tasks.filter(task => ! task.completed);
-				}
-			}
-		})
-	</script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+	<script src="main.js"></script>
 
 
 </body>
