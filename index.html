@@ -3,16 +3,22 @@
 <head>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 	<title>vue app</title>
-	<style type="text/css">
-		.color-red{
-			background-color: red;
-		}
-	</style>
 </head>
 <body>
 	<div id="root">
-		<!--<button v-bind:title="title"> Hover Over Me </button>-->
-		<button :title="title" :class="{'color-red': isDisabled}" :disabled=isDisabled @click="toggleButton"> Click Me </button>
+		<h2> All tasks </h2>
+		<ul>
+			<li v-for="task in tasks" v-text="task.name"></li>
+		</ul>
+
+		<button @click="addIncomplete"> Add to incomplete</button>
+
+
+		<h2> Incomplete tasks </h2>
+		<ul>
+			<li v-for="task in filteredTasks" v-text="task.name"></li>
+		</ul>
+		
 	</div>
 	
 	
@@ -22,13 +28,29 @@
 
 			data: {
 
-				title: "title being set by javascript",
-				isDisabled: false
+				tasks: [
+				{name: 'Do the laundry', completed: false},
+				{name: 'Cook lunch', completed: true},
+				{name: 'Go to school', completed: false},
+				{name: 'Do english homework', completed: false},
+				{name: 'Call grandma', completed: true},
+				]
 			},
 
 			methods: {
-				toggleButton(){
-					this.isDisabled = true;
+				addIncomplete(){
+					for (let i in this.tasks) {
+						if (this.tasks[i].completed){
+							this.tasks[i].completed = false;
+							break;
+						}
+					}
+				}
+			},
+
+			computed: {
+				filteredTasks(){
+					return this.tasks.filter(task => ! task.completed);
 				}
 			}
 		})
