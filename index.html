@@ -7,12 +7,19 @@
 </head>
 <body>
 	<div id="root" class="container">
-		<message-raw title="Hello World" body="lorem ipsum dolor sit amet."></message-raw>
-		<message-raw title="Hello Universe" body="Bla bla bla bla bla bla blae."></message-raw>
-		<modal-message v-if="showModal" @close="showModal = false">
-			<p> Custom message displayed in the modal</p>
-		</modal-message>
-		<button @click="showModal = true">Show modal message</button>
+		<tabs>
+
+			<tab name="About us" :selected="true">
+				<h1> Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1></tab>
+
+			<tab name="Our culture">
+				<h1>Inventore excepturi obcaecati fugiat minus deleniti minima quaerat.</h1></tab>
+
+			<tab name="Vision">
+				<h1>Distinctio, nobis omnis non illum? Suscipit omnis veniam architecto optio debitis ut, laudantium dolore?</h1>
+			</tab>
+
+		</tabs>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
